@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="Made a server.js file with a boilerplate and a app.listen part.">
+    <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="made a endpoint to check if the server works">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1793103198915</updated>
-      <workItem from="1793103200476" duration="1657000" />
+      <workItem from="1793103200476" duration="6359000" />
     </task>
     <task id="LOCAL-00001" summary="Made a server.js file with a boilerplate and a app.listen part.">
       <option name="closed" value="true" />
@@ -82,7 +78,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793103959427</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="made a endpoint to check if the server works">
+      <option name="closed" value="true" />
+      <created>1793105149472</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1793105149472</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,6 +94,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made a server.js file with a boilerplate and a app.listen part." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a server.js file with a boilerplate and a app.listen part." />
+    <MESSAGE value="made a endpoint to check if the server works" />
+    <option name="LAST_COMMIT_MESSAGE" value="made a endpoint to check if the server works" />
   </component>
 </project>

@@ -7,6 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/api/health', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT 1 + 1 AS result');
+        res.json({ status: 'ok', db: rows[0].result });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.listen(3000, () => {
     console.log('API kører på http://localhost:3000');
 });

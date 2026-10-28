@@ -23,7 +23,7 @@ app.get('/pokemon', (req, res) => {
         })
 });
 
-app.get('/filter/type',(req, res)=>{
+app.get('/pokemon/type',(req, res)=>{
     const TypePokemon = req.query.type;
 
     db.query('select * from pokemon where primary_type = ?', [TypePokemon])
@@ -32,7 +32,7 @@ app.get('/filter/type',(req, res)=>{
         })
 });
 
-app.get('/filter/minATK',(req, res)=>{
+app.get('/pokemon/minATK',(req, res)=>{
     const minAttack = req.query.attack;
 
     db.query('select * from pokemon where attack > ?', [minAttack])
@@ -41,7 +41,7 @@ app.get('/filter/minATK',(req, res)=>{
         })
 });
 
-app.get('/filter/name',(req, res)=>{
+app.get('/pokemon/name',(req, res)=>{
     const Characters = req.query.char;
     const searchValue = '%' + Characters + '%';
 
@@ -50,6 +50,26 @@ app.get('/filter/name',(req, res)=>{
             res.json(results);
         })
 });
+
+app.get('/trainer', (req, res) => {
+    db.query('SELECT * FROM trainer')
+        .then(([rows]) => {
+            res.json(rows);
+        })
+});
+
+app.get('/trainer/pokemon', (req, res) => {
+    const RequestedTrainer = req.query.trainer;
+    db.query(`SELECT p.pokedex_number, p.name, p.primary_type, p.secondary_type
+                FROM trainer t
+                JOIN trainer_pokemon tp ON t.trainer_id = tp.trainer_id
+                JOIN pokemon p ON tp.pokedex_number = p.pokedex_number
+                WHERE t.trainer_name = ?`,[RequestedTrainer])
+        .then(([rows]) => {
+            res.json(rows);
+        })
+});
+
 
 
 app.listen(3000, () => {

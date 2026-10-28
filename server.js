@@ -83,7 +83,7 @@ app.post('/add_trainer', (req, res) => {
         })
 });
 
-app.post('/add_pokemon_to_trainer', (req, res) => {
+app.post('/add_pokemonToTrainer', (req, res) => {
     const trainerName = req.body.trainer_name;
     const pokemonName = req.body.pokemon_name;
 
@@ -102,6 +102,19 @@ app.post('/add_pokemon_to_trainer', (req, res) => {
             res.status(201).json({ trainer_name: trainerName, pokemon_name: pokemonName });
         })
 });
+
+app.get('/pokemon/avgAttackByType', (req, res) => {
+    db.query(`SELECT RANK() OVER (ORDER BY AVG(attack) DESC) AS \`rank\`,
+            primary_type,
+            ROUND(AVG(attack), 2) AS avg_attack
+            FROM pokemon
+            GROUP BY primary_type
+            ORDER BY \`rank\``)
+        .then(([rows]) => {
+            res.json(rows);
+        })
+});
+
 
 
 app.listen(3000, () => {

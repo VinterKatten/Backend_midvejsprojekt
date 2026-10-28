@@ -70,6 +70,38 @@ app.get('/trainer/pokemon', (req, res) => {
         })
 });
 
+app.post('/add_trainer', (req, res) => {
+    const trainerName = req.body.trainer_name;
+
+    if (!trainerName) {
+        return res.status(400).json({ error: 'trainer_name is required' });
+    }
+
+    db.query('INSERT INTO trainer (trainer_name) VALUES (?)', [trainerName])
+        .then(([result]) => {
+            res.json({ trainer_id: result.insertId, trainer_name: trainerName});
+        })
+});
+
+app.post('/add_pokemon_to_trainer', (req, res) => {
+    const trainerName = req.body.trainer_name;
+    const pokemonName = req.body.pokemon_name;
+
+    if (!trainerName || !pokemonName) {
+        return res.status(400).json({ error: 'trainer_name and pokemon_name are required' });
+    }
+
+    db.query(`INSERT INTO trainer_pokemon (trainer_id, pokedex_number)
+                SELECT t.trainer_id, p.pokedex_number
+                FROM trainer t, pokemon p
+                WHERE t.trainer_name = ? AND p.name = ?`, [trainerName, pokemonName])
+        .then(([result]) => {
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ error: 'Trainer or pokemon not found' });
+            }
+            res.status(201).json({ trainer_name: trainerName, pokemon_name: pokemonName });
+        })
+});
 
 
 app.listen(3000, () => {

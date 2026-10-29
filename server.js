@@ -128,9 +128,6 @@ app.get('/pokemon/avgAttackByType', (req, res) => {
         });
 });
 
-app.listen(3000, () => {
-    console.log('API kører på http://localhost:3000');
-});
 
 app.get('/pokemon/typeDistribution', (req, res) => {
     db.query(`SELECT primary_type, COUNT(*) AS total
@@ -165,8 +162,11 @@ app.get('/pokemon/balancedStats', (req, res) => {
         res.json(rows);
     });
 });
-    
-    
+
+app.listen(3000, () => {
+    console.log('API kører på http://localhost:3000');
+});
+
     
     
 

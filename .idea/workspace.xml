@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="made a endpoint to check if the server works">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="tilføjet values til db.query, så den tilføjer værdierne til databasen" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +18,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/post" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -31,14 +34,80 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/VinterKatten/Backend_midvejsprojekt.git&quot;,
-    &quot;accountId&quot;: &quot;38db743c-526d-4598-966b-b16932c9def0&quot;
+    &quot;accountId&quot;: &quot;0b18d133-446e-40c7-8289-81f8aa10438b&quot;
   }
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0323980931702752" />
+      <entry key="MS500" value="1.7335168563827272" />
+      <entry key="S2" value="3.990927405110886" />
+      <entry key="S5" value="6.906092400260877" />
+      <entry key="S10" value="9.624619229321532" />
+      <entry key="S30" value="14.30904048931935" />
+      <entry key="S60" value="16.64548645635348" />
+      <entry key="M2" value="18.16518718430859" />
+      <entry key="M5" value="19.233678305029226" />
+      <entry key="M10" value="19.84832455166777" />
+      <entry key="M15" value="20.456285205040796" />
+      <entry key="M30" value="22.668496394063276" />
+      <entry key="H1" value="28.76231172138986" />
+      <entry key="H2" value="38.7686775680617" />
+      <entry key="H4" value="48.469185629926194" />
+      <entry key="D1" value="60.87405605077157" />
+      <entry key="W1" value="63.53809415857716" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9706007722990475" />
+      <entry key="MS500" value="1.7147103302378037" />
+      <entry key="S2" value="3.980561336067605" />
+      <entry key="S5" value="6.898830485863154" />
+      <entry key="S10" value="9.619450692221191" />
+      <entry key="S30" value="14.30635019179181" />
+      <entry key="S60" value="16.643886276014232" />
+      <entry key="M2" value="18.164302632926987" />
+      <entry key="M5" value="19.23329437188221" />
+      <entry key="M10" value="19.84805097422886" />
+      <entry key="M15" value="20.455996973987116" />
+      <entry key="M30" value="22.668185905750374" />
+      <entry key="H1" value="28.762036066654463" />
+      <entry key="H2" value="38.76847320675735" />
+      <entry key="H4" value="48.469056039441995" />
+      <entry key="D1" value="60.87402907600931" />
+      <entry key="W1" value="63.53809014605571" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="3LHFgMVL3TH0e6Fi5NRalKXT4BX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,20 +115,31 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.db.js.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.server.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\MaoBook\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10968.77" />
       </set>
     </attachedChunks>
   </component>
@@ -71,6 +151,10 @@
       <option name="presentableId" value="Default" />
       <updated>1793103198915</updated>
       <workItem from="1793103200476" duration="6359000" />
+      <workItem from="1793110104287" duration="1504000" />
+      <workItem from="1793180878086" duration="4030000" />
+      <workItem from="1793270783609" duration="311000" />
+      <workItem from="1793271529799" duration="6830000" />
     </task>
     <task id="LOCAL-00001" summary="Made a server.js file with a boilerplate and a app.listen part.">
       <option name="closed" value="true" />
@@ -88,15 +172,59 @@
       <option name="project" value="LOCAL" />
       <updated>1793105149472</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="tilføjet values til db.query, så den tilføjer værdierne til databasen">
+      <option name="closed" value="true" />
+      <created>1793281775015</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1793281775015</updated>
+    </task>
+    <task id="LOCAL-00004" summary="tilføjet values til db.query, så den tilføjer værdierne til databasen">
+      <option name="closed" value="true" />
+      <created>1793283227302</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1793283227302</updated>
+    </task>
+    <task id="LOCAL-00005" summary="tilføjet values til db.query, så den tilføjer værdierne til databasen">
+      <option name="closed" value="true" />
+      <created>1793289087547</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1793289087547</updated>
+    </task>
+    <task id="LOCAL-00006" summary="tilføjet values til db.query, så den tilføjer værdierne til databasen">
+      <option name="closed" value="true" />
+      <created>1793290767302</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1793290767302</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made a server.js file with a boilerplate and a app.listen part." />
     <MESSAGE value="made a endpoint to check if the server works" />
-    <option name="LAST_COMMIT_MESSAGE" value="made a endpoint to check if the server works" />
+    <MESSAGE value="tilføjet values til db.query, så den tilføjer værdierne til databasen" />
+    <option name="LAST_COMMIT_MESSAGE" value="tilføjet values til db.query, så den tilføjer værdierne til databasen" />
   </component>
 </project>

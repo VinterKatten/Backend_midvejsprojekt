@@ -156,7 +156,7 @@
       <workItem from="1793110104287" duration="1504000" />
       <workItem from="1793180878086" duration="4030000" />
       <workItem from="1793270783609" duration="311000" />
-      <workItem from="1793271529799" duration="5688000" />
+      <workItem from="1793271529799" duration="6592000" />
     </task>
     <task id="LOCAL-00001" summary="Made a server.js file with a boilerplate and a app.listen part.">
       <option name="closed" value="true" />
@@ -190,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793283227302</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="tilføjet values til db.query, så den tilføjer værdierne til databasen">
+      <option name="closed" value="true" />
+      <created>1793289087547</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1793289087547</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

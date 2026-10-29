@@ -125,5 +125,41 @@ app.listen(3000, () => {
     console.log('API kører på http://localhost:3000');
 });
 
+app.get('/pokemon/typeDistribution', (req, res) => {
+    db.query(`SELECT primary_type, COUNT(*) AS total
+               FROM pokemon
+               GROUP BY primary_type
+               ORDER BY total DESC`)
+        .then(([rows]) => {
+            res.json(rows);
+        });
+});
+
+app.get('/pokemon/balancedStats', (req, res) => {
+    db.query(`SELECT name, hp, attack, defence, 
+             special_defence, special_attack, speed,
+             GREATEST(hp, attack, defence,
+                      special_attack, special_defence, speed)
+             -
+             LEAST (hp, attack, defence,
+                      special_attack, special_defence, speed)
+             AS stat_difference
+        FROM pokemon
+        WHERE hp IS NOT NULL
+            AND attack IS NOT NULL
+            AND defence IS NOT NULL
+            AND special_attack IS NOT NULL
+            AND special_defence IS NOT NULL
+            AND speed IS NOT NULL
+        ORDER BY stat_difference ASC`)
+
+    .then(([rows]) => {
+        res.json(rows);
+    });
+});
+    
+    
+    
+    
 
 

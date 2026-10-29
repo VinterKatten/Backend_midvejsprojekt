@@ -61,26 +61,33 @@ app.get('/trainer', (req, res) => {
 app.get('/trainer/pokemon', (req, res) => {
     const RequestedTrainer = req.query.trainer;
     db.query(`SELECT p.pokedex_number, p.name, p.primary_type, p.secondary_type
-                FROM trainer t
-                JOIN trainer_pokemon tp ON t.trainer_id = tp.trainer_id
-                JOIN pokemon p ON tp.pokedex_number = p.pokedex_number
-                WHERE t.trainer_name = ?`,[RequestedTrainer])
+              FROM trainer t
+                       JOIN trainer_pokemon tp ON t.trainer_id = tp.trainer_id
+                       JOIN pokemon p ON tp.pokedex_number = p.pokedex_number
+              WHERE t.trainer_name = ?`, [RequestedTrainer])
         .then(([rows]) => {
             res.json(rows);
-        })
-});
+        });
+}); // <-- Denne manglede!
 
 app.post('/add_trainer', (req, res) => {
     const trainerName = req.body.trainer_name;
+    const age = req.body.age || null;              // <-- Denne manglede!
+    const hometown = req.body.hometown || null;    // <-- Denne manglede!
 
     if (!trainerName) {
         return res.status(400).json({ error: 'trainer_name is required' });
     }
 
-    db.query('INSERT INTO trainer (trainer_name) VALUES (?)', [trainerName])
+    db.query('INSERT INTO trainer (trainer_name, age, hometown) VALUES (?, ?, ?)', [trainerName, age, hometown])
         .then(([result]) => {
-            res.json({ trainer_id: result.insertId, trainer_name: trainerName});
-        })
+            res.json({
+                trainer_id: result.insertId,
+                trainer_name: trainerName,
+                age: age,
+                hometown: hometown
+            });
+        });
 });
 
 app.post('/add_pokemonToTrainer', (req, res) => {
@@ -92,31 +99,31 @@ app.post('/add_pokemonToTrainer', (req, res) => {
     }
 
     db.query(`INSERT INTO trainer_pokemon (trainer_id, pokedex_number)
-                SELECT t.trainer_id, p.pokedex_number
-                FROM trainer t, pokemon p
-                WHERE t.trainer_name = ? AND p.name = ?`, [trainerName, pokemonName])
+              SELECT t.trainer_id, p.pokedex_number
+              FROM trainer t, pokemon p
+              WHERE t.trainer_name = ? AND p.name = ?`, [trainerName, pokemonName])
         .then(([result]) => {
             if (result.affectedRows === 0) {
-                return res.status(404).json({ error: 'Trainer or pokemon not found' });
+                return res.status(404).json({ error: 'Trainer or Pokemon not found' });
             }
             res.status(201).json({ trainer_name: trainerName, pokemon_name: pokemonName });
-        })
+        });
 });
 
 app.get('/pokemon/avgAttackByType', (req, res) => {
-    db.query(`SELECT RANK() OVER (ORDER BY AVG(attack) DESC) AS \`rank\`,
-            primary_type,
-            ROUND(AVG(attack), 2) AS avg_attack
-            FROM pokemon
-            GROUP BY primary_type
-            ORDER BY \`rank\``)
+    db.query(`SELECT RANK() OVER (ORDER BY AVG(attack) DESC) AS \`rank\`, primary_type,
+                     ROUND(AVG(attack), 2) AS avg_attack
+              FROM pokemon
+              GROUP BY primary_type
+              ORDER BY \`rank\``)
         .then(([rows]) => {
             res.json(rows);
-        })
+        });
 });
-
-
 
 app.listen(3000, () => {
     console.log('API kører på http://localhost:3000');
 });
+
+
+

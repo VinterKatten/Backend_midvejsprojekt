@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="made a endpoint to check if the server works">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
@@ -19,25 +21,96 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/post" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "VinterKatten"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VinterKatten&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/VinterKatten/Backend_midvejsprojekt.git",
-    "accountId": "38db743c-526d-4598-966b-b16932c9def0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VinterKatten/Backend_midvejsprojekt.git&quot;,
+    &quot;accountId&quot;: &quot;0b18d133-446e-40c7-8289-81f8aa10438b&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0000000002092244" />
+      <entry key="S30" value="1.0016563969660297" />
+      <entry key="S60" value="1.0903744957952173" />
+      <entry key="M2" value="1.6710024739310567" />
+      <entry key="M5" value="3.238105438480288" />
+      <entry key="M10" value="4.3501581911143505" />
+      <entry key="M15" value="4.92472285122871" />
+      <entry key="M30" value="7.31904732240994" />
+      <entry key="H1" value="14.269561436336067" />
+      <entry key="H2" value="23.902906831885492" />
+      <entry key="H4" value="32.11823561460481" />
+      <entry key="D1" value="41.70270657855471" />
+      <entry key="W1" value="43.66308021271329" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.42044820762685725" />
+      <entry key="MS500" value="0.8408964152537145" />
+      <entry key="S2" value="0.9576032806985737" />
+      <entry key="S5" value="0.9828205985452511" />
+      <entry key="S10" value="0.9913730876663486" />
+      <entry key="S30" value="0.9987588917650349" />
+      <entry key="S60" value="1.0885723249030472" />
+      <entry key="M2" value="1.6689690081770907" />
+      <entry key="M5" value="3.2360845574174344" />
+      <entry key="M10" value="4.348723707912846" />
+      <entry key="M15" value="4.923641295900027" />
+      <entry key="M30" value="7.318407023642503" />
+      <entry key="H1" value="14.269168943723413" />
+      <entry key="H2" value="23.90266791957623" />
+      <entry key="H4" value="32.11809877178624" />
+      <entry key="D1" value="41.70268045815794" />
+      <entry key="W1" value="43.66307638524537" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="3LHFgMVL3TH0e6Fi5NRalKXT4BX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,19 +118,31 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.db.js.executor": "Run",
     "Node.js.server.js.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "javascript.preferred.runtime.type.id": "node",
-    "nodejs_package_manager_path": "npm"
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Users\\MaoBook\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.10968.77" />
       </set>
     </attachedChunks>
   </component>
@@ -69,6 +154,10 @@
       <option name="presentableId" value="Default" />
       <updated>1793103198915</updated>
       <workItem from="1793103200476" duration="6359000" />
+      <workItem from="1793110104287" duration="1504000" />
+      <workItem from="1793180878086" duration="4030000" />
+      <workItem from="1793270783609" duration="311000" />
+      <workItem from="1793271529799" duration="3484000" />
     </task>
     <task id="LOCAL-00001" summary="Made a server.js file with a boilerplate and a app.listen part.">
       <option name="closed" value="true" />
@@ -91,6 +180,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made a server.js file with a boilerplate and a app.listen part." />

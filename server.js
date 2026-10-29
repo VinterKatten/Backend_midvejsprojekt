@@ -151,7 +151,8 @@ app.get('/pokemon/balancedStats', (req, res) => {
             AND special_attack IS NOT NULL
             AND special_defence IS NOT NULL
             AND speed IS NOT NULL
-        ORDER BY stat_difference ASC`)
+        ORDER BY stat_difference ASC
+        LIMIT 20`)
 
     .then(([rows]) => {
         res.json(rows);

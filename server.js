@@ -58,63 +58,202 @@ app.get("/pokemon/diffTypes", (req,res)=>{
     })
 })
 
-app.get('/trainer', (req, res) => {
-    db.query('SELECT * FROM trainer')
-        .then(([rows]) => {
-            res.json(rows);
-        })
+app.get('/trainer', async (req, res, next) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT t.trainer_id, t.trainer_name, t.age, t.hometown,
+                   COUNT(tp.pokedex_number) AS pokemon_count
+            FROM trainer t
+                     LEFT JOIN trainer_pokemon tp ON tp.trainer_id = t.trainer_id
+            GROUP BY t.trainer_id, t.trainer_name, t.age, t.hometown
+            ORDER BY t.trainer_name`);
+        res.json(rows);
+    } catch (err) {
+        next(err);
+    }
 });
 
-app.get('/trainer/pokemon', (req, res) => {
-    const RequestedTrainer = req.query.trainer;
-    db.query(`SELECT p.pokedex_number, p.name, p.primary_type, p.secondary_type
-              FROM trainer t
-                       JOIN trainer_pokemon tp ON t.trainer_id = tp.trainer_id
-                       JOIN pokemon p ON tp.pokedex_number = p.pokedex_number
-              WHERE t.trainer_name = ?`, [RequestedTrainer])
-        .then(([rows]) => {
-            res.json(rows);
-        });
-}); // <-- Denne manglede!
+app.get('/trainer/pokemon', async (req, res, next) => {
+    try {
+        const trainerId = req.query.trainer_id;
+        const trainerName = typeof req.query.trainer === 'string' ? req.query.trainer.trim() : '';
 
-app.post('/add_trainer', (req, res) => {
-    const trainerName = req.body.trainer_name;
-    const age = req.body.age || null;              // <-- Denne manglede!
-    const hometown = req.body.hometown || null;    // <-- Denne manglede!
+        let whereClause;
+        let params;
 
-    if (!trainerName) {
-        return res.status(400).json({ error: 'trainer_name is required' });
-    }
-
-    db.query('INSERT INTO trainer (trainer_name, age, hometown) VALUES (?, ?, ?)', [trainerName, age, hometown])
-        .then(([result]) => {
-            res.json({
-                trainer_id: result.insertId,
-                trainer_name: trainerName,
-                age: age,
-                hometown: hometown
-            });
-        });
-});
-
-app.post('/add_pokemonToTrainer', (req, res) => {
-    const trainerName = req.body.trainer_name;
-    const pokemonName = req.body.pokemon_name;
-
-    if (!trainerName || !pokemonName) {
-        return res.status(400).json({ error: 'trainer_name and pokemon_name are required' });
-    }
-
-    db.query(`INSERT INTO trainer_pokemon (trainer_id, pokedex_number)
-              SELECT t.trainer_id, p.pokedex_number
-              FROM trainer t, pokemon p
-              WHERE t.trainer_name = ? AND p.name = ?`, [trainerName, pokemonName])
-        .then(([result]) => {
-            if (result.affectedRows === 0) {
-                return res.status(404).json({ error: 'Trainer or Pokemon not found' });
+        if (trainerId !== undefined && trainerId !== '') {
+            const id = Number(trainerId);
+            if (!Number.isInteger(id) || id <= 0) {
+                return res.status(400).json({ error: 'trainer_id must be a positive integer' });
             }
-            res.status(201).json({ trainer_name: trainerName, pokemon_name: pokemonName });
+            whereClause = 'tp.trainer_id = ?';
+            params = [id];
+        } else if (trainerName) {
+            // Backwards compatible: the old frontend used ?trainer=Ash
+            whereClause = 't.trainer_name = ?';
+            params = [trainerName];
+        } else {
+            return res.status(400).json({ error: 'trainer_id or trainer is required' });
+        }
+
+        const [rows] = await db.query(`
+            SELECT p.pokedex_number, p.name, p.primary_type, p.secondary_type,
+                   p.hp, p.attack, p.defence, p.special_attack,
+                   p.special_defence, p.speed
+            FROM trainer_pokemon tp
+                     JOIN pokemon p ON tp.pokedex_number = p.pokedex_number
+                     JOIN trainer t ON t.trainer_id = tp.trainer_id
+            WHERE ${whereClause}
+            ORDER BY p.pokedex_number`, params);
+
+        res.json(rows);
+    } catch (err) {
+        next(err);
+    }
+});
+
+app.post('/add_trainer', async (req, res, next) => {
+    try {
+        const body = req.body ?? {};
+        const trainerName = typeof body.trainer_name === 'string' ? body.trainer_name.trim() : '';
+        const hometown = typeof body.hometown === 'string' ? body.hometown.trim() : '';
+
+        if (!trainerName) {
+            return res.status(400).json({ error: 'trainer_name is required' });
+        }
+        if (trainerName.length > 50) {
+            return res.status(400).json({ error: 'trainer_name must be 50 characters or fewer' });
+        }
+        if (hometown.length > 50) {
+            return res.status(400).json({ error: 'hometown must be 50 characters or fewer' });
+        }
+
+        let age = null;
+        const rawAge = typeof body.age === 'string' ? body.age.trim() : body.age;
+        if (rawAge !== undefined && rawAge !== null && rawAge !== '') {
+            age = Number(rawAge);
+            if (!Number.isInteger(age) || age < 0 || age > 150) {
+                return res.status(400).json({ error: 'age must be a whole number between 0 and 150' });
+            }
+        }
+
+        const [existing] = await db.query(
+            'SELECT trainer_id FROM trainer WHERE trainer_name = ?',
+            [trainerName]
+        );
+        if (existing.length > 0) {
+            return res.status(409).json({ error: 'A trainer with that name already exists' });
+        }
+
+        const [result] = await db.query(
+            'INSERT INTO trainer (trainer_name, age, hometown) VALUES (?, ?, ?)',
+            [trainerName, age, hometown || null]
+        );
+
+        res.status(201).json({
+            trainer_id: result.insertId,
+            trainer_name: trainerName,
+            age: age,
+            hometown: hometown || null
         });
+    } catch (err) {
+        next(err);
+    }
+});
+
+app.post('/add_pokemonToTrainer', async (req, res, next) => {
+    try {
+        const body = req.body ?? {};
+        const trainerIdRaw = body.trainer_id;
+        const pokedexRaw = body.pokedex_number;
+        const trainerNameRaw = typeof body.trainer_name === 'string' ? body.trainer_name.trim() : '';
+        const pokemonNameRaw = typeof body.pokemon_name === 'string' ? body.pokemon_name.trim() : '';
+
+        let trainer;
+        if (trainerIdRaw !== undefined && trainerIdRaw !== null && trainerIdRaw !== '') {
+            const trainerId = Number(trainerIdRaw);
+            if (!Number.isInteger(trainerId) || trainerId <= 0) {
+                return res.status(400).json({ error: 'trainer_id must be a positive integer' });
+            }
+            const [rows] = await db.query(
+                'SELECT trainer_id, trainer_name FROM trainer WHERE trainer_id = ?',
+                [trainerId]
+            );
+            trainer = rows[0];
+            if (!trainer) {
+                return res.status(404).json({ error: 'Trainer not found' });
+            }
+        } else if (trainerNameRaw) {
+            // Backwards compatible: the old frontend sent trainer_name
+            const [rows] = await db.query(
+                'SELECT trainer_id, trainer_name FROM trainer WHERE trainer_name = ?',
+                [trainerNameRaw]
+            );
+            if (rows.length === 0) {
+                return res.status(404).json({ error: 'Trainer not found' });
+            }
+            if (rows.length > 1) {
+                return res.status(409).json({ error: 'Multiple trainers have that name; use trainer_id' });
+            }
+            trainer = rows[0];
+        } else {
+            return res.status(400).json({ error: 'trainer_id or trainer_name is required' });
+        }
+
+        let pokemon;
+        if (pokedexRaw !== undefined && pokedexRaw !== null && pokedexRaw !== '') {
+            const pokedexNumber = Number(pokedexRaw);
+            if (!Number.isInteger(pokedexNumber) || pokedexNumber <= 0) {
+                return res.status(400).json({ error: 'pokedex_number must be a positive integer' });
+            }
+            const [rows] = await db.query(
+                'SELECT pokedex_number, name FROM pokemon WHERE pokedex_number = ?',
+                [pokedexNumber]
+            );
+            pokemon = rows[0];
+            if (!pokemon) {
+                return res.status(404).json({ error: 'Pokémon not found' });
+            }
+        } else if (pokemonNameRaw) {
+            const [rows] = await db.query(
+                'SELECT pokedex_number, name FROM pokemon WHERE name = ?',
+                [pokemonNameRaw]
+            );
+            if (rows.length === 0) {
+                return res.status(404).json({ error: 'Pokémon not found' });
+            }
+            if (rows.length > 1) {
+                return res.status(409).json({ error: 'Multiple Pokémon have that name; use pokedex_number' });
+            }
+            pokemon = rows[0];
+        } else {
+            return res.status(400).json({ error: 'pokedex_number or pokemon_name is required' });
+        }
+
+        const [existing] = await db.query(
+            'SELECT 1 FROM trainer_pokemon WHERE trainer_id = ? AND pokedex_number = ?',
+            [trainer.trainer_id, pokemon.pokedex_number]
+        );
+        if (existing.length > 0) {
+            return res.status(409).json({
+                error: `${trainer.trainer_name} already has ${pokemon.name}`
+            });
+        }
+
+        await db.query(
+            'INSERT INTO trainer_pokemon (trainer_id, pokedex_number) VALUES (?, ?)',
+            [trainer.trainer_id, pokemon.pokedex_number]
+        );
+
+        res.status(201).json({
+            trainer_id: trainer.trainer_id,
+            trainer_name: trainer.trainer_name,
+            pokedex_number: pokemon.pokedex_number,
+            pokemon_name: pokemon.name
+        });
+    } catch (err) {
+        next(err);
+    }
 });
 
 app.get('/pokemon/avgAttackByType', (req, res) => {
@@ -161,6 +300,26 @@ app.get('/pokemon/balancedStats', (req, res) => {
     .then(([rows]) => {
         res.json(rows);
     });
+});
+
+// Central error handler so a failed query returns JSON instead of killing the process.
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    if (err.type === 'entity.parse.failed') {
+        return res.status(400).json({ error: 'Invalid JSON body' });
+    }
+    if (err.code === 'ER_DUP_ENTRY') {
+        return res.status(409).json({ error: 'That record already exists' });
+    }
+    if (err.code === 'ER_NO_REFERENCED_ROW_2') {
+        return res.status(400).json({ error: 'Referenced trainer or Pokémon does not exist' });
+    }
+    if (err.code === 'ER_DATA_TOO_LONG') {
+        return res.status(400).json({ error: 'A value is too long' });
+    }
+
+    res.status(500).json({ error: 'Internal server error' });
 });
 
 app.listen(3000, () => {

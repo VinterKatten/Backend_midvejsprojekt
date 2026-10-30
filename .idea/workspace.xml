@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="tilføjet values til db.query, så den tilføjer værdierne til databasen">
+    <list default="true" id="0bb48cb3-5a89-4bf5-8c92-e4c8bb85eb76" name="Changes" comment="idk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,23 +45,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0323980931702752" />
-      <entry key="MS500" value="1.7335168563827272" />
-      <entry key="S2" value="3.990927405110886" />
-      <entry key="S5" value="6.906092400260877" />
-      <entry key="S10" value="9.624619229321532" />
-      <entry key="S30" value="14.30904048931935" />
-      <entry key="S60" value="16.64548645635348" />
-      <entry key="M2" value="18.16518718430859" />
-      <entry key="M5" value="19.233678305029226" />
-      <entry key="M10" value="19.84832455166777" />
-      <entry key="M15" value="20.456285205040796" />
-      <entry key="M30" value="22.668496394063276" />
-      <entry key="H1" value="28.76231172138986" />
-      <entry key="H2" value="38.7686775680617" />
-      <entry key="H4" value="48.469185629926194" />
-      <entry key="D1" value="60.87405605077157" />
-      <entry key="W1" value="63.53809415857716" />
+      <entry key="MS100" value="1.605416282595224" />
+      <entry key="MS500" value="2.5580071617406124" />
+      <entry key="S2" value="4.885833367405826" />
+      <entry key="S5" value="7.832765606200405" />
+      <entry key="S10" value="10.573387231343213" />
+      <entry key="S30" value="15.283606225044217" />
+      <entry key="S60" value="17.6306862326086" />
+      <entry key="M2" value="19.157109660612527" />
+      <entry key="M5" value="20.230256788457297" />
+      <entry key="M10" value="20.846559044550727" />
+      <entry key="M15" value="21.455072130272697" />
+      <entry key="M30" value="23.667824253730487" />
+      <entry key="H1" value="29.76188530464075" />
+      <entry key="H2" value="39.76839018374279" />
+      <entry key="H4" value="49.46900598348752" />
+      <entry key="D1" value="61.87401844672781" />
+      <entry key="W1" value="64.53808855147372" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +83,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9706007722990475" />
-      <entry key="MS500" value="1.7147103302378037" />
-      <entry key="S2" value="3.980561336067605" />
-      <entry key="S5" value="6.898830485863154" />
-      <entry key="S10" value="9.619450692221191" />
-      <entry key="S30" value="14.30635019179181" />
-      <entry key="S60" value="16.643886276014232" />
-      <entry key="M2" value="18.164302632926987" />
-      <entry key="M5" value="19.23329437188221" />
-      <entry key="M10" value="19.84805097422886" />
-      <entry key="M15" value="20.455996973987116" />
-      <entry key="M30" value="22.668185905750374" />
-      <entry key="H1" value="28.762036066654463" />
-      <entry key="H2" value="38.76847320675735" />
-      <entry key="H4" value="48.469056039441995" />
-      <entry key="D1" value="60.87402907600931" />
-      <entry key="W1" value="63.53809014605571" />
+      <entry key="MS100" value="1.1555947283678272" />
+      <entry key="MS500" value="2.4398598265651477" />
+      <entry key="S2" value="4.849407033392308" />
+      <entry key="S5" value="7.814963099968696" />
+      <entry key="S10" value="10.562923190879916" />
+      <entry key="S30" value="15.27914321336748" />
+      <entry key="S60" value="17.628198331699778" />
+      <entry key="M2" value="19.155780832019275" />
+      <entry key="M5" value="20.2296950316572" />
+      <entry key="M10" value="20.846196541514622" />
+      <entry key="M15" value="21.45472461547761" />
+      <entry key="M30" value="23.667484123767366" />
+      <entry key="H1" value="29.76159482845395" />
+      <entry key="H2" value="39.76817841115679" />
+      <entry key="H4" value="49.468872687078495" />
+      <entry key="D1" value="61.87399085424706" />
+      <entry key="W1" value="64.53808445070472" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -158,6 +158,7 @@
       <workItem from="1793270783609" duration="311000" />
       <workItem from="1793271529799" duration="6830000" />
       <workItem from="1793290934189" duration="734000" />
+      <workItem from="1793348539298" duration="1255000" />
     </task>
     <task id="LOCAL-00001" summary="Made a server.js file with a boilerplate and a app.listen part.">
       <option name="closed" value="true" />
@@ -215,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793290962481</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="idk">
+      <option name="closed" value="true" />
+      <created>1793348571485</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1793348571485</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +245,7 @@
     <MESSAGE value="Made a server.js file with a boilerplate and a app.listen part." />
     <MESSAGE value="made a endpoint to check if the server works" />
     <MESSAGE value="tilføjet values til db.query, så den tilføjer værdierne til databasen" />
-    <option name="LAST_COMMIT_MESSAGE" value="tilføjet values til db.query, så den tilføjer værdierne til databasen" />
+    <MESSAGE value="idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="idk" />
   </component>
 </project>

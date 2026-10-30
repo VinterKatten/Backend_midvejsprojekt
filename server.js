@@ -51,6 +51,13 @@ app.get('/pokemon/name',(req, res)=>{
         })
 });
 
+app.get("/pokemon/diffTypes", (req,res)=>{
+    db.query('SELECT DISTINCT primary_type FROM pokemon')
+        .then(([rows]) => {
+        res.json(rows);
+    })
+})
+
 app.get('/trainer', (req, res) => {
     db.query('SELECT * FROM trainer')
         .then(([rows]) => {
